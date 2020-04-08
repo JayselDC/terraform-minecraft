@@ -1,3 +1,4 @@
+# Creates an additional persistent SSD
 resource "google_compute_disk" "ssd" {
   name = "${terraform.workspace}-${var.name}-disk"
   type = "pd-ssd"

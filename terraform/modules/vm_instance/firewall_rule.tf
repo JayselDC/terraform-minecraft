@@ -1,3 +1,4 @@
+# Creates a firewall rule to allow users to connect to the server
 resource "google_compute_firewall" "minecraft-inbound-users" {
   name        = "${terraform.workspace}-minecraft-inbound-users"
   description = "Allows users to connect to the server"

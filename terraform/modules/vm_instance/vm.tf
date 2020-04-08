@@ -1,3 +1,4 @@
+# Creates the virtual machine
 resource "google_compute_instance" "instance" {
   name         = "${terraform.workspace}-${var.name}"
   machine_type = "n1-standard-1"
@@ -28,6 +29,7 @@ resource "google_compute_instance" "instance" {
     scopes = ["storage-rw"]
   }
 
+  # Saves costs by making the instance preemptible
   scheduling {
     automatic_restart = false
     preemptible       = true
@@ -36,11 +38,13 @@ resource "google_compute_instance" "instance" {
   tags = [var.name]
 
   metadata = {
+    # Stops the server when the instance is shut down
     shutdown-script = <<EOT
       #!/bin/bash
       sudo screen -r -X stuff '/stop\n'
     EOT
 
+    # Starts the server as soon as the instance is started
     startup-script  = <<EOT
       #!/bin/bash
       if grep -qs '/dev/sdb ' /proc/mounts; 
@@ -59,6 +63,7 @@ resource "google_compute_instance" "instance" {
     ssh-keys = "${var.ssh_user}:${var.ssh_pubkey}"
   }
 
+  # Allows terraform to connect via SSH
   connection {
     type = "ssh"
     user = "jayseldelacruz"

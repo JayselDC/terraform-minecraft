@@ -1,3 +1,4 @@
+# Creates a bucket to store the backups of the world
 resource "google_storage_bucket" "server-backup" {
   name          = "${terraform.workspace}-${var.name}-backup"
   location      = "EUROPE-WEST2"
