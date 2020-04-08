@@ -1,0 +1,3 @@
+terraform/modules/vm_instance/files/id_rsa
+terraform/configurations/forge_server/.terraform/*
+terraform/configurations/jaysel-minecraft.json
