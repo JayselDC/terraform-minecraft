@@ -2,7 +2,7 @@
 ## Overview
 This repository is a Google Cloud Platform (GCP) Minecraft server allowing the creation of *reusable infrastructure* such as a virtual machine that will host a Minecraft server.
 
-## Pre-requisites
+## Prerequisites
 * Terraform v0.12.24
 * GCP Account
 * SSH
